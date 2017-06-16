@@ -1,6 +1,6 @@
 //output:../common/header.html, doctype:strict
 
-html(lang="en" xmlns:th="http://www.w3.org/1999/xhtml")
+html(lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml")
   head(th:fragment="common-header")
     meta(charset='UTF-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
@@ -9,7 +9,7 @@ html(lang="en" xmlns:th="http://www.w3.org/1999/xhtml")
     link(href='/css/bootstrap.min.css', rel='stylesheet')
     link(rel='stylesheet', href='/css/non-responsive.css')
     
-    link(rel='stylesheet', href='/css/style.min.css')
+    link(rel='stylesheet', href='/css/style.css')
     link(rel='icon', href='/image/apple-touch-icon.png')
       
   body
@@ -44,9 +44,11 @@ html(lang="en" xmlns:th="http://www.w3.org/1999/xhtml")
             li 
               a(href='#') SHOPPING CART
             li 
-              a(href='#') MY ACCOUNT
+              a(sec:authorize="isAnonymous()" th:href='@{/login}') MY ACCOUNT
             li 
-              a(href='#') LOGOUT
+              a(sec:authorize="isAuthenticated()" th:href='@{/myProfile}') MY ACCOUNT
+            li 
+              a(sec:authorize="isAuthenticated()" th:href='@{/logout}')  LOGOUT
     div(th:fragment="body-bottom-scripts")
       script(src='/js/jquery.min.js')
       script(src='/js/bootstrap.min.js')

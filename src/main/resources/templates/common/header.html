@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
   <head th:fragment="common-header">
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -7,7 +7,7 @@
     <title>BOOKSTORE</title>
     <link href="/css/bootstrap.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/css/non-responsive.css"/>
-    <link rel="stylesheet" href="/css/style.min.css"/>
+    <link rel="stylesheet" href="/css/style.css"/>
     <link rel="icon" href="/image/apple-touch-icon.png"/>
   </head>
   <body>
@@ -35,8 +35,9 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li> <a href="#">SHOPPING CART</a></li>
-            <li> <a href="#">MY ACCOUNT</a></li>
-            <li> <a href="#">LOGOUT</a></li>
+            <li> <a sec:authorize="isAnonymous()" th:href="@{/login}">MY ACCOUNT</a></li>
+            <li> <a sec:authorize="isAuthenticated()" th:href="@{/myProfile}">MY ACCOUNT</a></li>
+            <li> <a sec:authorize="isAuthenticated()" th:href="@{/logout}"> LOGOUT</a></li>
           </ul>
         </div>
       </nav>

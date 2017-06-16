@@ -18,19 +18,19 @@ html(lang='en', xmlns:th='http://www.w3.org/1000/xhtml')
           .col-xs-9.col-xs-offset-3
             // Nav tabs
             ul.nav.nav-tabs
-              li
+              li(th:classappend="${classActiveNewUser}? 'active'")
                 a(href='#tab-1', data-toggle='tab')
                   span(style='color: red;') Create new account
-              li
+              li(th:classappend="${classActiveLogin}? 'active'")
                 a(href='#tab-2', data-toggle='tab')
                   span(style='color: red;') Log in
-              li
+              li(th:classappend="${classActiveForgetPassword}? 'active'")
                 a(href='#tab-3', data-toggle='tab')
                   span(style='color: red;') Forget Password
             // Tab panels
             .tab-content
               // create new user pane
-              #tab-1.tab-pane.fade
+              #tab-1.tab-pane.fade(th:classappend="${classActiveNewUser}? 'in active'")
                 .panel-group
                   .panel.panel-default(style='border: none;')
                     .panel-body(style='background-color: #ededed; margin-top: 20px;')
@@ -50,7 +50,7 @@ html(lang='en', xmlns:th='http://www.w3.org/1000/xhtml')
                             | certain notification.
                         button.btn.btn-primary(type='submit') Create new account
               // log in
-              #tab-2.tab-pane.fade
+              #tab-2.tab-pane.fade(th:classappend="${classActiveLogin}? 'in active'")
                 .panel-group
                   .panel.panel-default(style='border: none;')
                     .panel-body(style='background-color: #ededed; margin-top: 20px;')
@@ -65,7 +65,7 @@ html(lang='en', xmlns:th='http://www.w3.org/1000/xhtml')
                           p(style='color: #828282') Enter the password that accompanies your username
                         button.btn.btn-primary(type='submit') Log in
               // forget password
-              #tab-3.tab-pane.fade
+              #tab-3.tab-pane.fade(th:classappend="${classActiveForgetPassword}? 'in active'")
                 .panel-group
                   .panel.panel-default(style='border: none;')
                     .panel-body(style='background-color: #ededed; margin-top: 20px;')
