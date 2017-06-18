@@ -1,7 +1,9 @@
 package com.bookstore.repository;
 
-/**
- * Created by LinCZ on 2017/6/16.
- */
-public interface RoleRepository {
+import org.springframework.data.repository.CrudRepository;
+
+import com.bookstore.domain.security.Role;
+
+public interface RoleRepository extends CrudRepository<Role, Long> {
+	Role findByname(String name);
 }
